@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from . import views 
+from . import views as stream_views
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('Streaming/',views.index,name='streaming'),
-    # path('Streaming/',views.video_feed,name='video_feed'),
+    path('live/',stream_views.synchronize_frame,name='web_feed'),
+    path('streaming/',stream_views.index,name='streaming'),
 ] 

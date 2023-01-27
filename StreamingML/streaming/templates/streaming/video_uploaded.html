@@ -1,2 +1,19 @@
-
-     
+<video id="live_stream" autoplay>hello</video>
+<script>
+    var video = document.getElementById('live_stream');
+    var src = '{% url "live_video_stream" %}';
+    if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+        });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = src;
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+        });
+    }
+</script>

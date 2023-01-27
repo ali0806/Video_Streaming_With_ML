@@ -26,6 +26,15 @@ class PostDetailView(DetailView):
     model = Post
 
 class PostCreateView(LoginRequiredMixin, CreateView):
+    """_summary_
+
+    Args:
+        LoginRequiredMixin (_type_): _description_
+        CreateView (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """    
     model = Post
     fields = ['title', 'content']
 

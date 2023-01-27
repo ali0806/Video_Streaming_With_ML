@@ -1,5 +1,4 @@
-from msilib.schema import SelfReg
-from typing import Self
+
 import cv2,os,urllib.request
 import numpy as np
 from django.conf import settings
@@ -11,23 +10,64 @@ face_detection_webcam = cv2.CascadeClassifier(os.path.join(
 
 
 
-class VideoCamera(object):
+class camera1:
 	def __init__(self):
-		self.video = cv2.VideoCapture(0)
+		pass
         # Define the codec and create VideoWriter object
 	def __del__(self):
 		self.video.release()
     
 	def get_frame(self):
+		self.video = cv2.VideoCapture(0)
 		success, image = self.video.read()
-		# We are using Motion JPEG, but OpenCV defaults to capture raw images,
-		# so we must encode it into JPEG in order to correctly display the
-		# video stream.
+		self.image= cv2.resize(image,dsize=(600,600))
+		return self.image
 
-		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-		faces_detected = face_detection_videocam.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
-		for (x, y, w, h) in faces_detected:
-			cv2.rectangle(image, pt1=(x, y), pt2=(x + w, y + h), color=(255, 0, 0), thickness=2)
-		frame_flip = cv2.flip(image,1)
-		ret, jpeg = cv2.imencode('.jpg', frame_flip)
-		return jpeg.tobytes()
+#camera 3
+
+class camera2:
+	def __init__(self):
+		pass
+        
+	def __del__(self):
+		self.video.release()
+    
+	def get_frame(self):
+		"""_summary_
+
+		Returns:
+			_type_: _description_
+		"""	
+		self.video = cv2.VideoCapture(0)	
+		success, image = self.video.read()
+	
+		image= cv2.resize(image,dsize=(600,600))
+		return image
+#Live Cam
+
+class camera3:
+	def __init__(self):
+		pass
+        
+	def __del__(self):
+		self.video.release()
+    
+	def get_frame(self):
+		self.video = cv2.VideoCapture(0)
+		success, image = self.video.read()
+		self.image= cv2.resize(image,dsize=(600,600))
+		return self.image
+#Camera 4
+
+class camera4:
+	def __init__(self):
+		pass
+        
+	def __del__(self):
+		self.video.release()
+    
+	def get_frame(self):
+		self.video = cv2.VideoCapture(0)
+		success, image = self.video.read()
+		image= cv2.resize(image,dsize=(600,600))
+		return image
