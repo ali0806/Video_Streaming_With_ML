@@ -13,4 +13,11 @@ class Video(models.Model):
 
 class StreamVideo(models.Model):
     video_file = models.FileField(upload_to='streamvideos/')
+
+
+'''
+Video_metadata class is used to save video metadata information
+'''
+class Video_metadata(models.Model):
+    metadata= models.CharField(max_length=300)
     
